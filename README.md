@@ -15,7 +15,7 @@ Example Android project showing architecture choice, coding style, ideas, ...
 * Build Variants
 * Nav Graph
 * App navigation (tabs, burger menu)
-* Firebase Tracking, Crashlytics & Remote Config
+* Firebase Tracking, Crashlytics, Remote Config & App Distribution
 * Force App Update
 * Phrase & i18n
 * Security (certificate pinning, obfuscation)
