@@ -18,3 +18,5 @@ Example Android project showing architecture choice, coding style, ideas, ...
 * Firebase Tracking, Crashlytics & Remote Config
 * Force App Update
 * Phrase & i18n
+* Security (certificate pinning, obfuscation)
+* oAuth2 & Token handling
