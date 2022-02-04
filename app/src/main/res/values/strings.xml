@@ -1,0 +1,9 @@
+<resources>
+    <string name="no_favourites">No favourites have been added. Please search for a title and then mark it as a favourite</string>
+    <string name="none_hidden">No hidden titles. If you wish for titles not to show in your search, simply hide it</string>
+    <string name="no_search_results">No search results were found</string>
+    <string name="search">Search…</string>
+    <string name="internet_required">Internet is required</string>
+    <string name="error_fetching_search">Error occurred fetching search results</string>
+    <string name="error_fetching_title">Error occurred fetching title</string>
+</resources>
