@@ -1,4 +1,4 @@
-package com.lethalmaus.exampleandroidproject.title.search
+package com.lethalmaus.exampleandroidproject.imdb.search
 
 import android.os.Bundle
 import android.view.View
@@ -14,10 +14,10 @@ import com.lethalmaus.exampleandroidproject.common.SuccessResponse
 import com.lethalmaus.exampleandroidproject.databinding.SearchFragmentBinding
 import com.lethalmaus.exampleandroidproject.repository.SearchResponse
 import com.lethalmaus.exampleandroidproject.repository.SearchResult
-import com.lethalmaus.exampleandroidproject.title.HIDDEN
-import com.lethalmaus.exampleandroidproject.title.TitleManager
-import com.lethalmaus.exampleandroidproject.title.TitleViewModel
-import com.lethalmaus.exampleandroidproject.title.adapter.SearchAdapter
+import com.lethalmaus.exampleandroidproject.imdb.HIDDEN
+import com.lethalmaus.exampleandroidproject.imdb.TitleManager
+import com.lethalmaus.exampleandroidproject.imdb.TitleViewModel
+import com.lethalmaus.exampleandroidproject.imdb.adapter.SearchAdapter
 
 class SearchFragment : BaseFragment<SearchFragmentBinding>(SearchFragmentBinding::inflate) {
 
@@ -43,7 +43,7 @@ class SearchFragment : BaseFragment<SearchFragmentBinding>(SearchFragmentBinding
             if (count > 0) {
                 binding.loader.visibility = View.VISIBLE
                 searchQuery = text.toString()
-                viewModel.search(getString(R.string.imdb_api_key), searchQuery)
+                viewModel.search(searchQuery)
             }
         }
     }
@@ -96,7 +96,7 @@ class SearchFragment : BaseFragment<SearchFragmentBinding>(SearchFragmentBinding
 
     private fun handleSearchResults(searchResponse: SearchResponse?) {
         if (searchResponse?.results?.isNotEmpty() == true) {
-            TitleManager.getTitles(requireContext(), HIDDEN)?.let { hidden ->
+            TitleManager.getTitles(HIDDEN)?.let { hidden ->
                 searchResponse.results.removeAll { it.id in hidden.map { item -> item.id } }
             }
             binding.noSearchResults.visibility = View.GONE
@@ -113,6 +113,6 @@ class SearchFragment : BaseFragment<SearchFragmentBinding>(SearchFragmentBinding
 
     private fun initTitleClickListener(): (SearchResult) -> Unit = {
         binding.loader.visibility = View.VISIBLE
-        viewModel.getTitle(getString(R.string.imdb_api_key), it.id)
+        viewModel.getTitle(it.id)
     }
 }

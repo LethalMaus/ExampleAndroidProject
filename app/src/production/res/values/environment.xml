@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">ExampleAndroidProject</string>
+    <string name="imdb_base_url" translatable="false">https://imdb-api.com/</string>
     <string name="imdb_api_key" translatable="false">k_k1uak04b</string>
 </resources>

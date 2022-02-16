@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "998100495927",
+    "project_id": "exampleandroidproject",
+    "storage_bucket": "exampleandroidproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:998100495927:android:cd751d9a519764af4a59b2",
+        "android_client_info": {
+          "package_name": "com.lethalmaus.exampleandroidproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "998100495927-ov75ok92n2itf82jm9mg5n32tjkpnvbh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHyWvY2wTAoaP0df2pXMc48Scez0-aTeY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "998100495927-ov75ok92n2itf82jm9mg5n32tjkpnvbh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:998100495927:android:9c01d526c4da45864a59b2",
+        "android_client_info": {
+          "package_name": "com.lethalmaus.exampleandroidproject.mock"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "998100495927-ov75ok92n2itf82jm9mg5n32tjkpnvbh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHyWvY2wTAoaP0df2pXMc48Scez0-aTeY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "998100495927-ov75ok92n2itf82jm9mg5n32tjkpnvbh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

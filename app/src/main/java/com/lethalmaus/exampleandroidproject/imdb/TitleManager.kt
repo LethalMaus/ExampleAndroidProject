@@ -1,9 +1,10 @@
-package com.lethalmaus.exampleandroidproject.title
+package com.lethalmaus.exampleandroidproject.imdb
 
 import android.content.Context
 import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.lethalmaus.exampleandroidproject.getAppContext
 import com.lethalmaus.exampleandroidproject.repository.TitleResponse
 import java.lang.reflect.Type
 
@@ -12,34 +13,23 @@ const val HIDDEN = "hidden"
 
 object TitleManager {
 
-    private var favourites: SharedPreferences? = null
-    private var hidden: SharedPreferences? = null
+    private var favourites: SharedPreferences = getAppContext().getSharedPreferences(FAVOURITES, Context.MODE_PRIVATE)
+    private var hidden: SharedPreferences? = getAppContext().getSharedPreferences(HIDDEN, Context.MODE_PRIVATE)
     private var gson = Gson()
 
-    private fun loadSharedPrefs(context: Context?, prefId: String) {
-        if (prefId == FAVOURITES && favourites == null) {
-            favourites = context?.getSharedPreferences(FAVOURITES, Context.MODE_PRIVATE)
-        } else if (prefId == HIDDEN && hidden == null) {
-            hidden = context?.getSharedPreferences(HIDDEN, Context.MODE_PRIVATE)
-        }
-    }
-
-    fun add(context: Context?, title: TitleResponse, prefId: String) {
-        loadSharedPrefs(context, prefId)
-        val titles = getTitles(context, prefId) ?: ArrayList()
+    fun add(title: TitleResponse, prefId: String) {
+        val titles = getTitles(prefId) ?: ArrayList()
         titles.add(title)
         save(titles, prefId)
     }
 
-    fun remove(context: Context?, title: TitleResponse, prefId: String) {
-        loadSharedPrefs(context, prefId)
-        val titles = getTitles(context, prefId)!!
+    fun remove(title: TitleResponse, prefId: String) {
+        val titles = getTitles(prefId)!!
         titles.remove(title)
         save(titles, prefId)
     }
 
-    fun getTitles(context: Context?, prefId: String): ArrayList<TitleResponse>? {
-        loadSharedPrefs(context, prefId)
+    fun getTitles(prefId: String): ArrayList<TitleResponse>? {
         val titlesString = getSharedPreference(prefId)?.getString(prefId, "")
         val type: Type = object : TypeToken<List<TitleResponse?>?>(){}.type
         return gson.fromJson(titlesString, type)

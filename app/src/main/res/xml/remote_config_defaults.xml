@@ -1,0 +1,10 @@
+<defaultsMap>
+    <entry>
+        <key>version</key>
+        <value>1</value>
+    </entry>
+    <entry>
+        <key>force</key>
+        <value>false</value>
+    </entry>
+</defaultsMap>

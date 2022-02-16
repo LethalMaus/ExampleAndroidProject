@@ -12,7 +12,7 @@ import com.lethalmaus.exampleandroidproject.MainActivity
 import com.lethalmaus.exampleandroidproject.R
 import com.lethalmaus.exampleandroidproject.databinding.ActivityMainBinding
 import com.lethalmaus.exampleandroidproject.repository.TitleResponse
-import com.lethalmaus.exampleandroidproject.title.TitleFragment
+import com.lethalmaus.exampleandroidproject.imdb.TitleFragment
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
 

@@ -1,13 +1,13 @@
-package com.lethalmaus.exampleandroidproject.title.search
+package com.lethalmaus.exampleandroidproject.imdb.search
 
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lethalmaus.exampleandroidproject.common.BaseFragment
 import com.lethalmaus.exampleandroidproject.databinding.HiddenTitlesFragmentBinding
-import com.lethalmaus.exampleandroidproject.title.HIDDEN
-import com.lethalmaus.exampleandroidproject.title.TitleManager
-import com.lethalmaus.exampleandroidproject.title.adapter.FavouriteHiddenAdapter
+import com.lethalmaus.exampleandroidproject.imdb.HIDDEN
+import com.lethalmaus.exampleandroidproject.imdb.TitleManager
+import com.lethalmaus.exampleandroidproject.imdb.adapter.FavouriteHiddenAdapter
 
 class HiddenTitlesFragment : BaseFragment<HiddenTitlesFragmentBinding>(HiddenTitlesFragmentBinding::inflate) {
 
@@ -18,7 +18,7 @@ class HiddenTitlesFragment : BaseFragment<HiddenTitlesFragmentBinding>(HiddenTit
         }
 
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        val hidden = TitleManager.getTitles(requireContext(), HIDDEN)
+        val hidden = TitleManager.getTitles(HIDDEN)
         if (hidden?.isNotEmpty() == true) {
             binding.noneHidden.visibility = View.GONE
             binding.recyclerView.adapter =

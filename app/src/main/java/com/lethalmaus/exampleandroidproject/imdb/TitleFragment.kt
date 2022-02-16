@@ -1,15 +1,21 @@
-package com.lethalmaus.exampleandroidproject.title
+package com.lethalmaus.exampleandroidproject.imdb
 
 import android.os.Bundle
 import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.analytics.ktx.logEvent
+import com.google.firebase.ktx.Firebase
 import com.lethalmaus.exampleandroidproject.R
 import com.lethalmaus.exampleandroidproject.common.BaseFragment
 import com.lethalmaus.exampleandroidproject.databinding.TitleFragmentBinding
 import com.lethalmaus.exampleandroidproject.repository.TitleResponse
 
 class TitleFragment(private val title: TitleResponse) : BaseFragment<TitleFragmentBinding>(TitleFragmentBinding::inflate) {
+
+    private val firebaseAnalytics: FirebaseAnalytics = Firebase.analytics
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -27,12 +33,12 @@ class TitleFragment(private val title: TitleResponse) : BaseFragment<TitleFragme
             parentFragmentManager.popBackStack()
         }
 
-        if (TitleManager.getTitles(requireContext(), HIDDEN)?.any { it.id == title.id} == true) {
+        if (TitleManager.getTitles(HIDDEN)?.any { it.id == title.id} == true) {
             binding.hide.setImageResource(R.drawable.show)
         }
         setHideClickListener()
 
-        if (TitleManager.getTitles(requireContext(), FAVOURITES)?.any { it.id == title.id} == true) {
+        if (TitleManager.getTitles(FAVOURITES)?.any { it.id == title.id} == true) {
             binding.favourite.setImageResource(R.drawable.unfavour)
         }
         setFavouriteClickListener()
@@ -40,24 +46,34 @@ class TitleFragment(private val title: TitleResponse) : BaseFragment<TitleFragme
 
     private fun setHideClickListener() {
         binding.hide.setOnClickListener {
-            if (TitleManager.getTitles(requireContext(), HIDDEN)?.any { it.id == title.id } == true) {
+            if (TitleManager.getTitles(HIDDEN)?.any { it.id == title.id } == true) {
                 binding.hide.setImageResource(R.drawable.hide)
-                TitleManager.remove(requireContext(), title, HIDDEN)
+                TitleManager.remove(title, HIDDEN)
             } else {
                 binding.hide.setImageResource(R.drawable.show)
-                TitleManager.add(requireContext(), title, HIDDEN)
+                TitleManager.add(title, HIDDEN)
             }
         }
     }
 
     private fun setFavouriteClickListener() {
         binding.favourite.setOnClickListener {
-            if (TitleManager.getTitles(requireContext(), FAVOURITES)?.any { it.id == title.id } == true) {
+            if (TitleManager.getTitles(FAVOURITES)?.any { it.id == title.id } == true) {
                 binding.favourite.setImageResource(R.drawable.favour)
-                TitleManager.remove(requireContext(), title, FAVOURITES)
+                TitleManager.remove(title, FAVOURITES)
+                title.title?.let {
+                    firebaseAnalytics.logEvent("FAVOURITE_REMOVED") {
+                        param("TITLE", it)
+                    }
+                }
             } else {
                 binding.favourite.setImageResource(R.drawable.unfavour)
-                TitleManager.add(requireContext(), title, FAVOURITES)
+                TitleManager.add(title, FAVOURITES)
+                title.title?.let {
+                    firebaseAnalytics.logEvent("FAVOURITE_ADDED") {
+                        param("TITLE", it)
+                    }
+                }
             }
         }
     }

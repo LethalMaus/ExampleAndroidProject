@@ -1,4 +1,4 @@
-package com.lethalmaus.exampleandroidproject.title
+package com.lethalmaus.exampleandroidproject.imdb
 
 import androidx.lifecycle.MutableLiveData
 import com.lethalmaus.exampleandroidproject.common.*
@@ -12,18 +12,18 @@ class TitleViewModel : BaseViewModel() {
     val titleLiveData = MutableLiveData<GenericResponse<TitleResponse?>>()
     val searchLiveData = MutableLiveData<GenericResponse<SearchResponse?>>()
 
-    fun getTitle(apiKey: String, title: String) = launch {
+    fun getTitle(title: String) = launch {
         if (isInternetAvailable()) {
-            val response = IMDBService().getTitle(apiKey, title)
+            val response = IMDBService().getTitle(title)
             emitLiveData(titleLiveData, response)
         } else {
             emitLiveData(titleLiveData, NetworkError(ErrorCode.NO_NETWORK_ERROR.errorCode))
         }
     }
 
-    fun search(apiKey: String, searchQuery: String) = launch {
+    fun search(searchQuery: String) = launch {
         if (isInternetAvailable()) {
-            val response = IMDBService().search(apiKey, searchQuery)
+            val response = IMDBService().search(searchQuery)
             emitLiveData(searchLiveData, response)
         } else {
             emitLiveData(searchLiveData, NetworkError(ErrorCode.NO_NETWORK_ERROR.errorCode))

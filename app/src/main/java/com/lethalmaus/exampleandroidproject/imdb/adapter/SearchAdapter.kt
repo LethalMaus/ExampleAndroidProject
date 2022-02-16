@@ -1,4 +1,4 @@
-package com.lethalmaus.exampleandroidproject.title.adapter
+package com.lethalmaus.exampleandroidproject.imdb.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.lethalmaus.exampleandroidproject.R
-import com.lethalmaus.exampleandroidproject.repository.TitleResponse
+import com.lethalmaus.exampleandroidproject.repository.SearchResult
 
-class FavouriteHiddenAdapter(private val dataSet: List<TitleResponse>?, private val action: ((TitleResponse) -> Unit)) : RecyclerView.Adapter<FavouriteHiddenAdapter.ViewHolder>() {
+class SearchAdapter(private val dataSet: List<SearchResult>?, private val action: ((SearchResult) -> Unit)) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val image: ImageView = view.findViewById(R.id.image)
@@ -29,7 +29,7 @@ class FavouriteHiddenAdapter(private val dataSet: List<TitleResponse>?, private 
                 .load(searchResult.image)
                 .into(viewHolder.image)
             viewHolder.title.text = searchResult.title
-            viewHolder.description.text = searchResult.plot
+            viewHolder.description.text = searchResult.description
             viewHolder.itemView.setOnClickListener {
                 action.invoke(searchResult)
             }

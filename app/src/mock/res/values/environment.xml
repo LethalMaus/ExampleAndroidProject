@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">ExampleAndroidProject</string>
+    <string name="imdb_base_url" translatable="false">http://127.0.0.1:8185</string>
+    <string name="imdb_api_key" translatable="false">imdb_api_key</string>
+</resources>

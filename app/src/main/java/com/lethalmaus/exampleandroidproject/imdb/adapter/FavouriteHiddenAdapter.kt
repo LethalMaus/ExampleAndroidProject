@@ -1,4 +1,4 @@
-package com.lethalmaus.exampleandroidproject.title.adapter
+package com.lethalmaus.exampleandroidproject.imdb.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,9 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.lethalmaus.exampleandroidproject.R
-import com.lethalmaus.exampleandroidproject.repository.SearchResult
+import com.lethalmaus.exampleandroidproject.repository.TitleResponse
 
-class SearchAdapter(private val dataSet: List<SearchResult>?, private val action: ((SearchResult) -> Unit)) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
+class FavouriteHiddenAdapter(private val dataSet: List<TitleResponse>?, private val action: ((TitleResponse) -> Unit)) : RecyclerView.Adapter<FavouriteHiddenAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val image: ImageView = view.findViewById(R.id.image)
@@ -24,14 +24,14 @@ class SearchAdapter(private val dataSet: List<SearchResult>?, private val action
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        dataSet?.get(position)?.let { searchResult ->
+        dataSet?.get(position)?.let { title ->
             Glide.with(viewHolder.image.context)
-                .load(searchResult.image)
+                .load(title.image)
                 .into(viewHolder.image)
-            viewHolder.title.text = searchResult.title
-            viewHolder.description.text = searchResult.description
+            viewHolder.title.text = title.title
+            viewHolder.description.text = title.plot
             viewHolder.itemView.setOnClickListener {
-                action.invoke(searchResult)
+                action.invoke(title)
             }
             if (position == dataSet.size-1) {
                 viewHolder.itemView.setBackgroundResource(R.drawable.rv_separator_top_bottom)
