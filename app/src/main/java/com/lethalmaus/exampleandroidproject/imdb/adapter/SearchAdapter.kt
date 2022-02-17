@@ -1,27 +1,10 @@
 package com.lethalmaus.exampleandroidproject.imdb.adapter
 
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.lethalmaus.exampleandroidproject.R
 import com.lethalmaus.exampleandroidproject.repository.SearchResult
 
-class SearchAdapter(private val dataSet: List<SearchResult>?, private val action: ((SearchResult) -> Unit)) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
-
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val image: ImageView = view.findViewById(R.id.image)
-        val title: TextView = view.findViewById(R.id.title)
-        val description: TextView = view.findViewById(R.id.description)
-    }
-
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.title_item, viewGroup, false)
-        return ViewHolder(view)
-    }
+class SearchAdapter(private val dataSet: List<SearchResult>?, private val action: ((SearchResult) -> Unit)) : BaseTitleAdapter() {
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         dataSet?.get(position)?.let { searchResult ->

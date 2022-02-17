@@ -39,12 +39,8 @@ class IMDBDispatcher : Dispatcher() {
         } catch (e: IOException) {
             throw e
         } finally {
-            try {
-                inputStream?.close()
-                reader?.close()
-            } catch (e: IOException) {
-                throw e
-            }
+            inputStream?.close()
+            reader?.close()
         }
     }
 

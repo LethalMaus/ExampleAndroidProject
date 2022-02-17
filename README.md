@@ -24,7 +24,7 @@ Library used to load images hosted online that also allows for offline caching.
 Can also show a placeholder and animations.
 
 ## Lottie Animations
-TODO
+Regular graphics are boring. Lottie animations brings a little more life to the screen. Perfect for buttons animations and app introductions.
 
 ## Testing
 
@@ -72,9 +72,6 @@ The app has been setup to send crash information to Firebase
 
 ## Force App Update
 Some cases require the app to be updated flexibly or by force eg. code breaking API changes in older app version
-
-## Phrase (i18n)
-TODO
 
 ## SonarCloud
 See [here](https://sonarcloud.io/project/overview?id=LethalMaus_ExampleAndroidProject)

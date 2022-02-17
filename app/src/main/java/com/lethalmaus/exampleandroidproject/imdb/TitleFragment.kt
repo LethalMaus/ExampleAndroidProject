@@ -38,8 +38,11 @@ class TitleFragment(private val title: TitleResponse) : BaseFragment<TitleFragme
         }
         setHideClickListener()
 
+        binding.favourite.speed = 0.5f
         if (TitleManager.getTitles(FAVOURITES)?.any { it.id == title.id} == true) {
-            binding.favourite.setImageResource(R.drawable.unfavour)
+            binding.favourite.progress = 1f
+        } else {
+            binding.favourite.progress = 0.5f
         }
         setFavouriteClickListener()
     }
@@ -59,21 +62,32 @@ class TitleFragment(private val title: TitleResponse) : BaseFragment<TitleFragme
     private fun setFavouriteClickListener() {
         binding.favourite.setOnClickListener {
             if (TitleManager.getTitles(FAVOURITES)?.any { it.id == title.id } == true) {
-                binding.favourite.setImageResource(R.drawable.favour)
-                TitleManager.remove(title, FAVOURITES)
-                title.title?.let {
-                    firebaseAnalytics.logEvent("FAVOURITE_REMOVED") {
-                        param("TITLE", it)
-                    }
-                }
+                removeFavourite()
             } else {
-                binding.favourite.setImageResource(R.drawable.unfavour)
-                TitleManager.add(title, FAVOURITES)
-                title.title?.let {
-                    firebaseAnalytics.logEvent("FAVOURITE_ADDED") {
-                        param("TITLE", it)
-                    }
-                }
+                addFavourite()
+            }
+            binding.favourite.playAnimation()
+        }
+    }
+
+    private fun removeFavourite() {
+        binding.favourite.setMinAndMaxFrame(0, 30)
+        binding.favourite.progress = 0f
+        TitleManager.remove(title, FAVOURITES)
+        title.title?.let {
+            firebaseAnalytics.logEvent("FAVOURITE_REMOVED") {
+                param("TITLE", it)
+            }
+        }
+    }
+
+    private fun addFavourite() {
+        binding.favourite.setMinAndMaxFrame(30, 60)
+        binding.favourite.progress = 0f
+        TitleManager.add(title, FAVOURITES)
+        title.title?.let {
+            firebaseAnalytics.logEvent("FAVOURITE_ADDED") {
+                param("TITLE", it)
             }
         }
     }

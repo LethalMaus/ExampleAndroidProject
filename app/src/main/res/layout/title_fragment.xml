@@ -27,19 +27,17 @@
                 app:srcCompat="@drawable/arrow"
                 app:tint="@color/teal_700" />
 
-            <ImageView
+            <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/favourite"
                 android:layout_width="30dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:importantForAccessibility="no"
+                android:layout_height="30dp"
                 android:scaleType="fitCenter"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/favour"
-                app:tint="@color/teal_700" />
+                app:lottie_progress="1"
+                app:lottie_fileName="favourite.json"/>
 
             <ImageView
                 android:id="@+id/hide"
