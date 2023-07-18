@@ -29,14 +29,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         getRemoteConfig()
-        if (savedInstanceState == null) {
-            supportFragmentManager
-                .beginTransaction()
-                .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
-                .replace(R.id.frameContainer, FavouritesFragment(), FavouritesFragment::class.java.simpleName)
-                .addToBackStack(FavouritesFragment::class.java.simpleName)
-                .commit()
-        }
     }
 
     private fun getRemoteConfig() {
@@ -114,13 +106,6 @@ class MainActivity : AppCompatActivity() {
                     appUpdateManager.completeUpdate()
                 }
             }
-    }
-
-    override fun onBackPressed() {
-        when {
-            supportFragmentManager.backStackEntryCount > 1 -> supportFragmentManager.popBackStack()
-            else -> finish()
-        }
     }
 
     companion object {

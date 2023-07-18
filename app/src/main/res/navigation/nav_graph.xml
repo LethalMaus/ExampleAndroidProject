@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/FavouritesFragment">
+
+    <fragment
+        android:id="@+id/FavouritesFragment"
+        android:name="com.lethalmaus.exampleandroidproject.imdb.favourite.FavouritesFragment"
+        tools:layout="@layout/favourites_fragment">
+
+        <action
+            android:id="@+id/toSearch"
+            app:destination="@id/SearchFragment" />
+
+        <action
+            android:id="@+id/toHiddenTitles"
+            app:destination="@id/HiddenTitlesFragment" />
+
+        <action
+            android:id="@+id/toTitle"
+            app:destination="@id/TitleFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/SearchFragment"
+        android:name="com.lethalmaus.exampleandroidproject.imdb.search.SearchFragment"
+        tools:layout="@layout/search_fragment">
+
+        <action
+            android:id="@+id/toFavourites"
+            app:destination="@id/FavouritesFragment" />
+
+        <action
+            android:id="@+id/toTitle"
+            app:destination="@id/TitleFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/HiddenTitlesFragment"
+        android:name="com.lethalmaus.exampleandroidproject.imdb.search.HiddenTitlesFragment"
+        tools:layout="@layout/hidden_titles_fragment">
+
+        <action
+            android:id="@+id/toFavourites"
+            app:destination="@id/FavouritesFragment" />
+
+        <action
+            android:id="@+id/toTitle"
+            app:destination="@id/TitleFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/TitleFragment"
+        android:name="com.lethalmaus.exampleandroidproject.imdb.TitleFragment"
+        tools:layout="@layout/title_fragment">
+
+        <argument
+            android:name="title"
+            app:argType="com.lethalmaus.exampleandroidproject.repository.Title"/>
+
+    </fragment>
+
+</navigation>

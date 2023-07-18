@@ -9,10 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.lethalmaus.exampleandroidproject.MainActivity
-import com.lethalmaus.exampleandroidproject.R
 import com.lethalmaus.exampleandroidproject.databinding.ActivityMainBinding
-import com.lethalmaus.exampleandroidproject.repository.TitleResponse
-import com.lethalmaus.exampleandroidproject.imdb.TitleFragment
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
 
@@ -33,15 +30,6 @@ open class BaseFragment<T : ViewBinding>(private val inflate: Inflate<T>) : Frag
         super.onDestroyView()
         _binding = null
         _activityBinding = null
-    }
-
-    fun navigateToTitle(title: TitleResponse) {
-        parentFragmentManager
-            .beginTransaction()
-            .setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right)
-            .replace(R.id.frameContainer, TitleFragment(title), TitleFragment::class.java.simpleName)
-            .addToBackStack(TitleFragment::class.java.simpleName)
-            .commit()
     }
 
     fun minimizeKeyboard() {

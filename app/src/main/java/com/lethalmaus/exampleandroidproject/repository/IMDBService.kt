@@ -8,24 +8,24 @@ import com.lethalmaus.exampleandroidproject.common.mapToGenericResponse
 import com.lethalmaus.exampleandroidproject.getAppContext
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.Query
 
-const val API_KEY = "apiKey"
+const val API_KEY = "apikey"
 
 class IMDBService {
 
     interface IMDBEndpoints {
 
-        @GET(imdbSearch)
+        @GET("/")
         fun search(
-            @Path("searchQuery") searchQuery: String,
-            @Path(API_KEY) apiKey: String = getAppContext().getString(R.string.imdb_api_key)
+            @Query("s") searchQuery: String,
+            @Query(API_KEY) apiKey: String = getAppContext().getString(R.string.imdb_api_key)
         ): Call<SearchResponse>
 
-        @GET(imdbTitle)
+        @GET("/")
         fun getTitle(
-            @Path("title") title: String,
-            @Path(API_KEY) apiKey: String = getAppContext().getString(R.string.imdb_api_key)
+            @Query("i") title: String,
+            @Query(API_KEY) apiKey: String = getAppContext().getString(R.string.imdb_api_key)
         ): Call<TitleResponse>
     }
 
