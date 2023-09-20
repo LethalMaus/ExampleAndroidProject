@@ -6,4 +6,5 @@
     <string name="internet_required">Internet is required</string>
     <string name="error_fetching_search">Error occurred fetching search results</string>
     <string name="error_fetching_title">Error occurred fetching title</string>
+    <string name="open_source_licenses">Open Source Licenses</string>
 </resources>

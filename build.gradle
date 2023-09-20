@@ -6,15 +6,20 @@ buildscript {
         maven { url = "https://dl.bintray.com/androidx/compose" }
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:7.4.2"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0"
+        classpath "com.android.tools.build:gradle:8.1.1"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.10"
         classpath 'com.google.firebase:firebase-appdistribution-gradle:4.0.0'
-        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.7'
-        classpath 'com.google.gms:google-services:4.3.15'
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.6.0")
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.9'
+        classpath 'com.google.gms:google-services:4.4.0'
+        classpath 'androidx.navigation:navigation-safe-args-gradle-plugin:2.7.2'
+        classpath 'com.google.android.gms:oss-licenses-plugin:0.10.6'
     }
 }
 
-task clean(type: Delete) {
+plugins {
+    id 'com.google.devtools.ksp' version '1.9.10-1.0.13' apply false
+}
+
+tasks.register('clean', Delete) {
     delete rootProject.buildDir
 }

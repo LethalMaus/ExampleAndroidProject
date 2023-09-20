@@ -83,7 +83,7 @@ suspend fun <T> Call<T>.mapToGenericResponse(): GenericResponse<T?> {
 suspend fun <T : Any?> Call<T>.awaitResponse(): Response<T> {
     return suspendCancellableCoroutine { continuation ->
         enqueue(object : Callback<T> {
-            override fun onResponse(call: Call<T>?, response: Response<T>) {
+            override fun onResponse(call: Call<T>, response: Response<T>) {
                 continuation.resume(response)
             }
 

@@ -26,6 +26,9 @@ Can also show a placeholder and animations.
 ## Lottie Animations
 Regular graphics are boring. Lottie animations brings a little more life to the screen. Perfect for buttons animations and app introductions.
 
+## Including open source notices
+To comply with open source libraries licenses, we display the notices using oss-licenses dependency
+
 ## Testing
 
 ### Integration Tests
